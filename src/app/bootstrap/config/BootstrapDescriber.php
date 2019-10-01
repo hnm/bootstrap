@@ -1,10 +1,9 @@
 <?php
-namespace n2nutil\bootstrap\config;
+namespace bootstrap\config;
 
 use n2n\util\type\attrs\Attributes;
 use n2n\core\module\ConfigDescriberAdapter;
 use n2n\web\dispatch\mag\MagCollection;
-use n2n\core\N2N;
 use n2n\impl\web\dispatch\mag\model\MagForm;
 use n2n\web\dispatch\mag\MagDispatchable;
 use n2n\util\type\attrs\LenientAttributeReader;
@@ -12,7 +11,7 @@ use n2n\util\type\CastUtils;
 use n2n\impl\web\dispatch\mag\model\MagCollectionMag;
 use n2n\impl\web\dispatch\mag\model\StringMag;
 use n2n\impl\web\dispatch\mag\model\NumericMag;
-use n2nutil\bootstrap\img\BsImgComposer;
+use bootstrap\img\BsImgComposer;
 
 class BootstrapDescriber extends ConfigDescriberAdapter {
 	const ATTR_BREAKPOINTS_KEY = 'breakpoints';

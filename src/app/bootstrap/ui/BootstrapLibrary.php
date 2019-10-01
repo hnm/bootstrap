@@ -1,5 +1,5 @@
 <?php
-namespace n2nutil\bootstrap\ui;
+namespace bootstrap\ui;
 
 use n2n\impl\web\ui\view\html\LibraryAdapter;
 use n2n\impl\web\ui\view\html\HtmlView;

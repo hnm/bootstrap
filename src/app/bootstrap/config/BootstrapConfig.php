@@ -1,5 +1,5 @@
 <?php
-namespace n2nutil\bootstrap\config;
+namespace bootstrap\config;
 
 use n2n\util\type\ArgUtils;
 
@@ -43,7 +43,7 @@ class BootstrapConfig {
 	}
 	
 	/**
-	 * @return \n2nutil\bootstrap\config\BootstrapConfig
+	 * @return \bootstrap\config\BootstrapConfig
 	 */
 	static function getDefault() {
 		return new BootstrapConfig([

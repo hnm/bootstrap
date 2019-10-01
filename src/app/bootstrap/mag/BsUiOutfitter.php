@@ -1,5 +1,5 @@
 <?php
-namespace n2nutil\bootstrap\mag;
+namespace bootstrap\mag;
 
 use n2n\impl\web\ui\view\html\HtmlElement;
 use n2n\impl\web\ui\view\html\HtmlUtils;
@@ -8,7 +8,7 @@ use n2n\web\dispatch\mag\MagCollection;
 use n2n\web\dispatch\mag\UiOutfitter;
 use n2n\web\dispatch\map\PropertyPath;
 use n2n\web\ui\UiComponent;
-use n2nutil\bootstrap\ui\BsConfig;
+use bootstrap\ui\BsConfig;
 use n2n\impl\web\ui\view\html\HtmlSnippet;
 
 class BsUiOutfitter implements UiOutfitter {
@@ -63,7 +63,7 @@ class BsUiOutfitter implements UiOutfitter {
 
 	/**
 	 * @param int $elemNature
-	 * @return HtmlElement
+	 * @return UiComponent
 	 */
 	public function createElement(int $elemNature, array $attrs = null, $contents = ''): UiComponent {
 		if ($elemNature & self::EL_NATRUE_CONTROL_ADDON_SUFFIX_WRAPPER) {
@@ -120,19 +120,23 @@ class BsUiOutfitter implements UiOutfitter {
 		return new HtmlSnippet($contents);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see \n2n\web\dispatch\mag\UiOutfitter::createMagDispatchableView()
+	 */
 	public function createMagDispatchableView(PropertyPath $propertyPath = null, HtmlView $contextView): UiComponent {
 		$bsChild = $this->bsConfig->getChild();
 		$bs = (null !== $bsChild) ? $bsChild : $this->bsConfig;
 		
 		if ($this->outfitConfig === null) {
-			return $contextView->getImport('\n2nutil\bootstrap\mag\bsMagForm.html',
+			return $contextView->getImport('\bootstrap\mag\bsMagForm.html',
 					array('propertyPath' => $propertyPath, 'bs' => $bs, 'uiOutfitter' => $this, 'outfit' => null));
 		}
 		
 		$outfitChild = $this->outfitConfig->getChild();
 		$outfit = (null !== $outfitChild) ? $outfitChild : $this->outfitConfig;
 
-		return $contextView->getImport('\n2nutil\bootstrap\mag\bsMagForm.html',
+		return $contextView->getImport('\bootstrap\mag\bsMagForm.html',
 				array('propertyPath' => $propertyPath, 'bs' => $bs, 'uiOutfitter' => $this, 'outfit' => $outfit));
 	}
 }

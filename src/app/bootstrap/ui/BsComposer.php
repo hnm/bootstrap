@@ -1,5 +1,5 @@
 <?php
-namespace n2nutil\bootstrap\ui;
+namespace bootstrap\ui;
 
 use n2n\impl\web\ui\view\html\HtmlUtils;
 use n2n\web\ui\UiComponent;
@@ -22,7 +22,7 @@ class BsComposer {
 
 	/**
 	 * @param bool $required
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function req(bool $required = true) {
 		$this->required = $required;
@@ -31,7 +31,7 @@ class BsComposer {
 	
 	/**
 	 * @param bool $labelHidden
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function lHide(bool $labelHidden = true) {
 		$this->labelHidden = $labelHidden;
@@ -40,7 +40,7 @@ class BsComposer {
 	
 	/**
 	 * @param bool $labelAttrsCleared
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function lAttrsClear(bool $labelAttrsCleared = true) {
 		$this->labelAttrsCleared = $labelAttrsCleared;
@@ -49,7 +49,7 @@ class BsComposer {
 	
 	/**
 	 * @param array $labelAttrs
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function lAttrs(array $labelAttrs) {
 		$this->labelAttrs = $labelAttrs;
@@ -59,7 +59,7 @@ class BsComposer {
 	/**
 	 * @param string $name
 	 * @param mixed $value
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function lAttr(string $name, $value = null) {
 		$this->labelAttrs = $this->buildAttrs((array) $this->labelAttrs, $name, $value);
@@ -67,7 +67,7 @@ class BsComposer {
 	}
 	
 	/**
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function ph($placeholder) {
 		$this->placeholder = $placeholder;
@@ -76,7 +76,7 @@ class BsComposer {
 	
 	/**
 	 * @param bool $noAutoPlaceholder
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function noAutoPh(bool $noAutoPlaceholder = true) {
 		$this->autoPlaceholderUsed = !$noAutoPlaceholder;
@@ -85,7 +85,7 @@ class BsComposer {
 	
 	/**
 	 * @param string|UiComponent $helpTxet
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function hTxt($helpText) {
 		$this->helpText = $helpText;
@@ -94,7 +94,7 @@ class BsComposer {
 	
 	/**
 	 * @param array $controlAttrs
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function cAttrs(array $controlAttrs) {
 		$this->controlAttrs = $controlAttrs;
@@ -104,7 +104,7 @@ class BsComposer {
 	/**
 	 * @param string $name
 	 * @param mixed $value
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function cAttr(string $name, $value = null) {
 		$this->controlAttrs = $this->buildAttrs((array) $this->controlAttrs, $name, $value);
@@ -113,7 +113,7 @@ class BsComposer {
 	
 	/**
 	 * @param array $groupAttrs
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function gAttrs(array $groupAttrs) {
 		$this->groupAttrs = $groupAttrs;
@@ -123,7 +123,7 @@ class BsComposer {
 	/**
 	 * @param string $name
 	 * @param mixed $value
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function gAttr(string $name, $value = null) {
 		$this->groupAttrs = $this->buildAttrs((array) $this->groupAttrs, $name, $value);
@@ -132,7 +132,7 @@ class BsComposer {
 	
 	/**
 	 * @param bool $groupAttrsCleared
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function gAttrsClear(bool $groupAttrsCleared = true) {
 		$this->groupAttrsCleared = $groupAttrsCleared;
@@ -152,7 +152,7 @@ class BsComposer {
 	
 	/**
 	 * @param bool $controlAttrsCleared
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function cAttrsClear(bool $controlAttrsCleared = true) {
 		$this->controlAttrsCleared = $controlAttrsCleared;
@@ -163,7 +163,7 @@ class BsComposer {
 	 * @param string $labelClassName
 	 * @param string $containerClassName
 	 * @param string $labelOffsetClassName
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function row(string $labelClassName, string $containerClassName, string $labelOffsetClassName) {
 		$this->rowClassNames = array('labelClassName' => $labelClassName,
@@ -173,7 +173,7 @@ class BsComposer {
 	}
 	
 	/**
-	 * @return \n2nutil\bootstrap\ui\BsComposer
+	 * @return \bootstrap\ui\BsComposer
 	 */
 	public function rowClear(bool $rowCleared = true) {
 		$this->rowCleared = true;

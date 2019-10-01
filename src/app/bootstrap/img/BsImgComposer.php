@@ -1,5 +1,5 @@
 <?php
-namespace n2nutil\bootstrap\img;
+namespace bootstrap\img;
 
 use n2n\impl\web\ui\view\html\img\ImgComposer;
 use n2n\impl\web\ui\view\html\img\ProportionalImgComposer;
@@ -7,7 +7,7 @@ use n2n\util\type\ArgUtils;
 use n2n\core\container\N2nContext;
 use n2n\io\managed\File;
 use n2n\impl\web\ui\view\html\img\ImgSet;
-use n2nutil\bootstrap\config\BootstrapConfig;
+use bootstrap\config\BootstrapConfig;
 
 class BsImgComposer implements ImgComposer {
 // 	const BP_SM = 576;
@@ -52,7 +52,7 @@ class BsImgComposer implements ImgComposer {
 
 	/**
 	 * @param int|ImgComposer $arg
-	 * @return \n2nutil\bootstrap\img\BsImgComposer
+	 * @return \bootstrap\img\BsImgComposer
 	 */
 	public function sm($arg) {
 		$this->assign('sm', $arg);
@@ -61,7 +61,7 @@ class BsImgComposer implements ImgComposer {
 
 	/**
 	 * @param int|ImgComposer $arg
-	 * @return \n2nutil\bootstrap\img\BsImgComposer
+	 * @return \bootstrap\img\BsImgComposer
 	 */
 	public function md($arg) {
 		$this->assign('md', $arg);
@@ -70,7 +70,7 @@ class BsImgComposer implements ImgComposer {
 
 	/**
 	 * @param int|ImgComposer $arg
-	 * @return \n2nutil\bootstrap\img\BsImgComposer
+	 * @return \bootstrap\img\BsImgComposer
 	 */
 	public function lg($arg) {
 		$this->assign('lg', $arg);
@@ -79,7 +79,7 @@ class BsImgComposer implements ImgComposer {
 
 	/**
 	 * @param int|ImgComposer $arg
-	 * @return \n2nutil\bootstrap\img\BsImgComposer
+	 * @return \bootstrap\img\BsImgComposer
 	 */
 	public function xl($arg) {
 		$this->assign('xl', $arg);
@@ -89,7 +89,7 @@ class BsImgComposer implements ImgComposer {
 	/**
 	 * @param string $name
 	 * @param int $width
-	 * @return \n2nutil\bootstrap\img\BsImgComposer
+	 * @return \bootstrap\img\BsImgComposer
 	 */
 	public function bp(string $name, int $width) {
 		$this->assign($name, $width);

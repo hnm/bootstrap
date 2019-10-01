@@ -1,5 +1,5 @@
 <?php
-namespace n2nutil\bootstrap\ui;
+namespace bootstrap\ui;
 
 class BsConfig {
 	protected $required;

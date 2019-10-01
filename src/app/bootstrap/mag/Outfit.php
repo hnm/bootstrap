@@ -1,6 +1,6 @@
 <?php
 
-namespace n2nutil\bootstrap\mag;
+namespace bootstrap\mag;
 
 class Outfit {
 	/**

@@ -1,5 +1,5 @@
 <?php
-namespace n2nutil\bootstrap\ui;
+namespace bootstrap\ui;
 
 use n2n\web\dispatch\mag\Mag;
 use n2n\web\dispatch\mag\UiOutfitter;
@@ -11,9 +11,9 @@ use n2n\impl\web\ui\view\html\HtmlUtils;
 use n2n\web\dispatch\map\PropertyPath;
 use n2n\impl\web\ui\view\html\HtmlSnippet;
 use n2n\l10n\DynamicTextCollection;
-use n2nutil\bootstrap\mag\OutfitComposer;
-use n2nutil\bootstrap\mag\BsUiOutfitter;
-use n2nutil\bootstrap\mag\OutfitConfig;
+use bootstrap\mag\OutfitComposer;
+use bootstrap\mag\BsUiOutfitter;
+use bootstrap\mag\OutfitConfig;
 use n2nutil\jquery\datepicker\DatePickerHtmlBuilder;
 use n2n\util\type\ArgUtils;
 use n2n\web\ui\Raw;

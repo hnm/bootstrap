@@ -1,6 +1,6 @@
 <?php
 
-namespace n2nutil\bootstrap\mag;
+namespace bootstrap\mag;
 
 use n2n\web\dispatch\mag\UiOutfitter;
 

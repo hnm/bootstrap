@@ -3,12 +3,12 @@
 	$formHtml = \n2n\impl\web\ui\view\html\HtmlView::formHtml($view);
 
 	$bs = $view->getParam('bs', false);
-	$view->assert($bs === null || $bs instanceof \n2nutil\bootstrap\ui\BsComposer || $bs instanceof \n2nutil\bootstrap\ui\BsConfig);
+	$view->assert($bs === null || $bs instanceof \bootstrap\ui\BsComposer || $bs instanceof \bootstrap\ui\BsConfig);
 
 	$outfit = $view->getParam('outfit', false);
-	$view->assert($outfit === null || $outfit instanceof \n2nutil\bootstrap\mag\OutfitComposer  || $outfit instanceof \n2nutil\bootstrap\mag\OutfitConfig);
+	$view->assert($outfit === null || $outfit instanceof \bootstrap\mag\OutfitComposer  || $outfit instanceof \bootstrap\mag\OutfitConfig);
 
-	$bsFormHtml = new \n2nutil\bootstrap\ui\BsFormHtmlBuilder($view, $bs);
+	$bsFormHtml = new \bootstrap\ui\BsFormHtmlBuilder($view, $bs);
 ?>
 <?php if (!$formHtml->meta()->isFormOpen()): ?>
 
