@@ -26,7 +26,7 @@ class BootstrapLibrary  extends LibraryAdapter {
 	 */
 	public function apply(HtmlView $view, HtmlBuilderMeta $htmlMeta) {
 		if ($this->loadBootstrapCss) {
-			$htmlMeta->addCss('dist/css/bootstrap.min.css', null, 'n2nutil\bootstrap');
+			$htmlMeta->addCss('dist/css/bootstrap.min.css', null, 'bootstrap');
 		}
 		
 		if ($this->loadJs) {
@@ -34,7 +34,7 @@ class BootstrapLibrary  extends LibraryAdapter {
 			if ($this->bodyEnd) {
 				$htmlMeta = $htmlMeta->bodyEnd();
 			}
-			$htmlMeta->addJs('dist/js/bootstrap.min.js', 'n2nutil\bootstrap');
+			$htmlMeta->addJs('dist/js/bootstrap.min.js', 'bootstrap');
 		}
 	}
 }
