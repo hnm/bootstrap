@@ -219,7 +219,7 @@ class BsFormHtmlBuilder {
 		$bsConfig = $this->createBsConfig($bsComposer);
 		
 		return $this->createUiFormGroup($propertyPath, null, 
-				$this->createUiInputCheckboxCheck($propertyPath, $value, $bsConfig), $bsConfig);
+				$this->createUiInputCheckboxCheck($propertyPath, $value, $bsConfig, $label), $bsConfig);
 	}
 	
 	protected function createUiInputCheckboxCheck(PropertyPath $propertyPath, $value, BsConfig $bsConfig, $label = null) {
