@@ -426,13 +426,16 @@ class BsFormHtmlBuilder {
 			$uiContainer->appendLn();
 			if ($uiLabel !== null) $uiContainer->appendLn($uiLabel);
 			
-			if ($rowClassNames === null) {
+			if ($rowClassNames === null && empty($containerClassNames)) {
 				$uiContainer->appendLn($uiControl);
 			} else {
-				$className = $rowClassNames['containerClassName'];
+				$className = $rowClassNames !== null ? $rowClassNames['containerClassName'] : '';
 				
 				if (!empty($containerClassNames)) {
-					$className .= ' ' . implode(' ', $containerClassNames);
+					if (null !== $rowClassNames) {
+						$className .= ' ';
+					}
+					$className .= implode(' ', $containerClassNames);
 				}
 				
 				if ($uiLabel === null && !$bsConfig->isLabelHidden()) {
