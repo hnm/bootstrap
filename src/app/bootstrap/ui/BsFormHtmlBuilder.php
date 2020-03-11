@@ -408,16 +408,6 @@ class BsFormHtmlBuilder {
 		}
 		
 		$uiMessage = null;
-		$containerClassNames = [];
-		if ($propertyPath !== null && $this->formHtml->meta()->isDispatched()) {
-			if ($this->formHtml->meta()->hasErrors($propertyPath)) {
-				$uiMessage = $this->ariaFormHtml->getMessage($propertyPath, 'div', array('class' => 'invalid-feedback'));
-				$containerClassNames[] = 'bs-is-invalid';
-			} else {
-				$containerClassNames[] = 'bs-is-valid';
-			}
-		}
-		
 		$uiContainer = null;
 		$helpTextUiContainer = null;
 		if (!$this->inline) {
@@ -426,18 +416,10 @@ class BsFormHtmlBuilder {
 			$uiContainer->appendLn();
 			if ($uiLabel !== null) $uiContainer->appendLn($uiLabel);
 			
-			if ($rowClassNames === null && empty($containerClassNames)) {
+			if ($rowClassNames === null) {
 				$uiContainer->appendLn($uiControl);
 			} else {
-				$className = $rowClassNames !== null ? $rowClassNames['containerClassName'] : '';
-				
-				if (!empty($containerClassNames)) {
-					if (null !== $rowClassNames) {
-						$className .= ' ';
-					}
-					$className .= implode(' ', $containerClassNames);
-				}
-				
+				$className = $rowClassNames['containerClassName'];
 				if ($uiLabel === null && !$bsConfig->isLabelHidden()) {
 					$className .= ' ' . $rowClassNames['labelOffsetClassName'];
 				}
