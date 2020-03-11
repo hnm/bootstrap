@@ -28,7 +28,8 @@
 
 @mixin form-validation-state($state, $color, $icon) {
   .#{$state}-feedback {
-    display: none;
+  	// hnm - needs to be display: block; instead of display: none; cause feedback only gets added after serverside validation
+    display: block;
     width: 100%;
     margin-top: $form-feedback-margin-top;
     @include font-size($form-feedback-font-size);
