@@ -408,6 +408,11 @@ class BsFormHtmlBuilder {
 		}
 		
 		$uiMessage = null;
+		if ($propertyPath !== null && $this->formHtml->meta()->isDispatched() 
+				&& $this->formHtml->meta()->hasErrors($propertyPath)) {
+			$uiMessage = $this->ariaFormHtml->getMessage($propertyPath, 'div', array('class' => 'invalid-feedback'));
+		}
+		
 		$uiContainer = null;
 		$helpTextUiContainer = null;
 		if (!$this->inline) {
@@ -419,7 +424,7 @@ class BsFormHtmlBuilder {
 			if ($rowClassNames === null) {
 				$uiContainer->appendLn($uiControl);
 			} else {
-				$className = $rowClassNames['containerClassName'];
+				$className = $rowClassNames !== null ? $rowClassNames['containerClassName'] : '';
 				if ($uiLabel === null && !$bsConfig->isLabelHidden()) {
 					$className .= ' ' . $rowClassNames['labelOffsetClassName'];
 				}
