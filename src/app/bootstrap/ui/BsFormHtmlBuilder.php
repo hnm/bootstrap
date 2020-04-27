@@ -426,7 +426,7 @@ class BsFormHtmlBuilder {
 			} else {
 				$className = $rowClassNames['containerClassName'];
 				
-				if ($uiLabel === null && !$bsConfig->isLabelHidden() && $rowClassNames !== null) {
+				if ($uiLabel === null && !$bsConfig->isLabelHidden()) {
 					$className .= ' ' . $rowClassNames['labelOffsetClassName'];
 				}
 				$uiContainer->appendLn($helpTextUiContainer = new HtmlElement('div', array('class' => $className), $uiControl));
