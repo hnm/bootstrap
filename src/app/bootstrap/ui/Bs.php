@@ -115,6 +115,32 @@ class Bs {
 	public static function gAttrsClear(bool $groupAttrsCleared = true) {
 		return (new BsComposer())->gAttrsClear($groupAttrsCleared);
 	}
+	
+	/**
+	 * @param array $formCheckAttrs
+	 * @return \bootstrap\ui\BsComposer
+	 */
+	public static function fcAttrs(array $formCheckAttrs) {
+		return (new BsComposer())->fcAttrs($formCheckAttrs);
+	}
+	
+	/**
+	 * @param string $name
+	 * @param mixed $value
+	 * @return \bootstrap\ui\BsComposer
+	 */
+	public static function fcAttr(string $name, $value = null) {
+		return (new BsComposer())->fcAttr($name, $value);
+	}
+	
+	/**
+	 * @param bool $formCheckAttrsCleared
+	 * @return \bootstrap\ui\BsComposer
+	 */
+	public static function fcAttrsClear(bool $formCheckAttrsCleared = true) {
+		return (new BsComposer())->fcAttrsClear($formCheckAttrsCleared);
+	}
+	
 	/**
 	 * @param string $labelClassName
 	 * @param string $containerClassName

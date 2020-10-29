@@ -12,10 +12,11 @@ class BsConfig {
 	protected $groupAttrs;
 	protected $rowClassNames;
 	protected $child;
+	protected $formCheckAttrs;
 
 	public function __construct(bool $required, bool $autoPlaceholder, string $placeholder = null,
 			$helpText = null, bool $labelHidden, array $labelAttrs, array $controlAttrs, array $groupAttrs,
-			array $rowClassNames = null, BsComposer $child = null) {
+			array $rowClassNames = null, BsComposer $child = null, array $formCheckAttrs) {
 		$this->required = $required;
 		$this->autoPlaceholder = $autoPlaceholder;
 		$this->placeholder = $placeholder;
@@ -26,6 +27,7 @@ class BsConfig {
 		$this->groupAttrs = $groupAttrs;
 		$this->rowClassNames = $rowClassNames;
 		$this->child = $child;
+		$this->formCheckAttrs = $formCheckAttrs;
 	}
 	
 	public function isRequired() {
@@ -66,5 +68,9 @@ class BsConfig {
 
 	public function getChild() {
 		return $this->child;
+	}
+	
+	public function getFormCheckAttrs() {
+		return $this->formCheckAttrs;
 	}
 }

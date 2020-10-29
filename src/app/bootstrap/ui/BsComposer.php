@@ -19,6 +19,7 @@ class BsComposer {
 	private $groupAttrs;
 	private $groupAttrsCleared = false;
 	private $child;
+	private $formCheckAttrs;
 
 	/**
 	 * @param bool $required
@@ -139,6 +140,34 @@ class BsComposer {
 		return $this;
 	}
 	
+	/**
+	 * @param array $formCheckAttrs
+	 * @return \bootstrap\ui\BsComposer
+	 */
+	public function fcAttrs(array $formCheckAttrs) {
+		$this->formCheckAttrs = $formCheckAttrs;
+		return $this;
+	}
+	
+	/**
+	 * @param string $name
+	 * @param mixed $value
+	 * @return \bootstrap\ui\BsComposer
+	 */
+	public function fcAttr(string $name, $value = null) {
+		$this->formCheckAttrs = $this->buildAttrs((array) $this->formCheckAttrs, $name, $value);
+		return $this;
+	}
+	
+	/**
+	 * @param bool $formCheckAttrsCleared
+	 * @return \bootstrap\ui\BsComposer
+	 */
+	public function fcAttrsClear(bool $formCheckAttrsCleared = true) {
+		$this->$formCheckAttrsCleared = $formCheckAttrsCleared;
+		return $this;
+	}
+	
 	private function buildAttrs(array $attrs, string $name, $value) {
 		$newAttrs = null;
 		if ($value === null) {
@@ -190,6 +219,7 @@ class BsComposer {
 		$controlAttrs = (array) $this->controlAttrs;
 		$rowClassNames = $this->rowClassNames;
 		$groupAttrs = (array) $this->groupAttrs;
+		$formCheckAttrs = (array) $this->formCheckAttrs;
 		
 		if ($parentBsConfig !== null) {
 			if ($this->required === null) $required = $parentBsConfig->isRequired();
@@ -207,13 +237,17 @@ class BsComposer {
 			if (!$this->groupAttrsCleared) {
 				$groupAttrs = HtmlUtils::mergeAttrs($parentBsConfig->getGroupAttrs(), $groupAttrs);
 			}
+			if (!$this->formCheckAttrs) {
+				$formCheckAttrs = HtmlUtils::mergeAttrs($parentBsConfig->getFormCheckAttrs(), $formCheckAttrs);
+			}
+			
 			if (!$this->rowCleared) {
 				if ($this->rowClassNames === null) $rowClassNames = $parentBsConfig->getRowClassNames();
 			}
 		}
 		
 		return new BsConfig($required, $autoPlaceholder, $placeholder, $helpText, $labelHidden, $labelAttrs,
-				$controlAttrs, $groupAttrs, $rowClassNames, $this->child);
+				$controlAttrs, $groupAttrs, $rowClassNames, $this->child, $formCheckAttrs);
 	}
 
 	public function child(BsComposer $bsComposer = null) {

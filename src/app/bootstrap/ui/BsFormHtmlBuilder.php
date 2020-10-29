@@ -369,6 +369,16 @@ class BsFormHtmlBuilder {
 			UiComponent $label = null, UiComponent $uiControl, bool $displayErrors, bool $inline, 
 			PropertyPath $errPropertyPath = null) {
 		$uiFormCheck = new HtmlSnippet($uiControl);
+		$formCheckAttrs = $bsConfig->getFormCheckAttrs();
+		
+		$formCheckClassNames = array();
+		if (!isset($formCheckAttrs['class'])) {
+			$formCheckClassNames[] = 'form-check';
+			if ($inline) {
+				$formCheckClassNames[] = 'form-check-inline';
+			}
+		}
+		
 		
 		if (null !== $label) {
 			$uiFormCheck->append($label);
@@ -379,7 +389,7 @@ class BsFormHtmlBuilder {
 			$uiFormCheck->append($this->ariaFormHtml->getMessage($errPropertyPath, 'div', array('class' => 'invalid-feedback')));
 		}
 		
-		return new HtmlElement('div', array('class' => 'form-check' . ($inline ? ' form-check-inline' : '')), $uiFormCheck);
+		return new HtmlElement('div', HtmlUtils::mergeAttrs(['class' => implode(' ', $formCheckClassNames)], $formCheckAttrs), $uiFormCheck);
 	}
 	
 	protected function buildFormCheckLabelAttrs(BsConfig $bsConfig) {
