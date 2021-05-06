@@ -32,6 +32,11 @@
 			"hnm\\bootstrap\\" : "src/app/bootstrap"
 		}
 	},
+	"autoload-dev" : {
+		"psr-4" : {
+			"hnm\\bootstrap\\" : "src/test/bootstrap"
+		}
+	},
 	"require-dev" : {
 		"phpunit/phpunit" : "^9.5"
 	}
