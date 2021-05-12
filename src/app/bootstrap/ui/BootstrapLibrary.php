@@ -30,7 +30,6 @@ class BootstrapLibrary  extends LibraryAdapter {
 		}
 		
 		if ($this->loadJs) {
-			$htmlMeta->addLibrary(new JQueryLibrary(3, $this->bodyEnd));
 			if ($this->bodyEnd) {
 				$htmlMeta = $htmlMeta->bodyEnd();
 			}
