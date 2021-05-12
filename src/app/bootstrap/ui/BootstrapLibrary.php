@@ -33,7 +33,7 @@ class BootstrapLibrary  extends LibraryAdapter {
 			if ($this->bodyEnd) {
 				$htmlMeta = $htmlMeta->bodyEnd();
 			}
-			$htmlMeta->addJs('dist/js/bootstrap.min.js', 'bootstrap');
+			$htmlMeta->addJs('dist/js/bootstrap.bundle.min.js', 'bootstrap');
 		}
 	}
 }
