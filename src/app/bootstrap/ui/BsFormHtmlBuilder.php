@@ -63,6 +63,7 @@ class BsFormHtmlBuilder {
 	
 	public function openInline(Dispatchable $dispatchableObject, string $enctype = null, $method = null, 
 			array $attrs = null, $action = null) {
+		// migrate from bootstrap 4 to bootstrap 5
 		$attrs = HtmlUtils::mergeAttrs(array('class' => 'form-inline'), $attrs);
 		$uiOpen = $this->open($dispatchableObject, $enctype, $method, 
 				$this->buildFormAttrs($dispatchableObject, $attrs), $action);
@@ -152,7 +153,7 @@ class BsFormHtmlBuilder {
 			bool $multiple = false) {
 		$propertyPath = $this->createPropertyPath($propertyExpression);
 		$bsConfig = $this->createBsConfig($bsComposer);
-		$controlAttrs = $this->createFormControlAttrs($propertyPath, $bsConfig, null, null, false);
+		$controlAttrs = HtmlUtils::mergeAttrs(['class' => 'form-select'], $this->createFormControlAttrs($propertyPath, $bsConfig, null, null, false));
 		
 		return $this->createUiFormGroup($propertyPath,
 				$this->createUiLabel($propertyPath, $bsConfig, $label),
@@ -411,7 +412,7 @@ class BsFormHtmlBuilder {
 
 		$formGroupClassNames = array();
 		if (!isset($groupAttrs['class'])) {
-			$formGroupClassNames[] = 'form-group';
+			$formGroupClassNames[] = 'mb-3';
 			if (!$this->inline && $rowClassNames !== null) {
 				$formGroupClassNames[] = 'row';
 			}
@@ -469,12 +470,14 @@ class BsFormHtmlBuilder {
 					array('title' => $dtc->translate('aria_required_label')), '*'));
 		}
 		
-		return new HtmlElement('legend', $this->createLabelAttrs($bsConfig, 'col-form-label'), $label);
+		return new HtmlElement('legend', $this->createLabelAttrs($bsConfig, 'form-label'), $label);
 	}
 	
 	protected function createUiLabel(PropertyPath $propertyPath = null, BsConfig $bsConfig, $label, bool $applyFor = true, string $className = null) {
 		if (null === $className && null !== $bsConfig->getRowClassNames()) {
 			$className = 'col-form-label';
+		} else {
+			$className = 'form-label';
 		}
 		
 		if ($applyFor) {
@@ -511,7 +514,7 @@ class BsFormHtmlBuilder {
 		}*/
 		
 		if ($bsConfig->isLabelHidden() || $this->inline) {
-			$classNames[] = ' sr-only';
+			$classNames[] = ' visually-hidden';
 		}
 		
 		if (empty($classNames)) return $attrs;
