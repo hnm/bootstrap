@@ -17,6 +17,7 @@ use bootstrap\mag\OutfitConfig;
 use n2nutil\jquery\datepicker\DatePickerHtmlBuilder;
 use n2n\util\type\ArgUtils;
 use n2n\web\ui\Raw;
+use n2n\web\ui\SimpleBuildContext;
 
 class BsFormHtmlBuilder {
 	private $view;
@@ -526,7 +527,7 @@ class BsFormHtmlBuilder {
 		$attrs = $bsConfig->getControlAttrs();
 		
 		$className = 'form-check-input';
-		if ($this->formHtml->meta()->isDispatched()) {
+		if ($this->formHtml->meta()->isDispatched() && $this->formHtml->meta()->hasErrors()) {
 			$className .= ' is-' . ($this->formHtml->meta()->hasErrors($propertyPath) ? 'invalid' : 'valid');
 		}
 		
@@ -557,7 +558,7 @@ class BsFormHtmlBuilder {
 			$className = 'form-control';
 		}
 
-		if ($this->formHtml->meta()->isDispatched()) {
+		if ($this->formHtml->meta()->isDispatched() && $this->formHtml->meta()->hasErrors()) {
 			$className .= ' is-' . ($this->formHtml->meta()->hasErrors($propertyPath) ? 'invalid' : 'valid');
 		}
 		
@@ -625,7 +626,7 @@ class BsFormHtmlBuilder {
 		}
 		
 		$formHtmlMeta = $this->formHtml->meta();
-		if ($formHtmlMeta->isDispatched()) {
+		if ($formHtmlMeta->isDispatched() && $formHtmlMeta->hasErrors()) {
 			if ($formHtmlMeta->hasErrors($propertyPath)) {
 				$controlAttrs = HtmlUtils::mergeAttrs($controlAttrs, ['class' => 'is-invalid']);
 				$checkControlAttrs = HtmlUtils::mergeAttrs($checkControlAttrs, ['class' => 'is-invalid']);
@@ -646,7 +647,7 @@ class BsFormHtmlBuilder {
 		}
 
 		$uiControl = $magWrapper->getMag()->createUiField($propertyPath, $this->view, $bsUiOutfitter);
-
+		
 		$htmlElement = $this->createUiFormGroup($propertyPath, $uiLabel, $uiControl, $bsConfig);
 		$htmlElement->setAttrs(HtmlUtils::mergeAttrs($containerAttrs, $htmlElement->getAttrs()));
 
