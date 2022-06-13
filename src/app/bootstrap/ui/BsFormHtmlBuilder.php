@@ -17,7 +17,6 @@ use bootstrap\mag\OutfitConfig;
 use n2nutil\jquery\datepicker\DatePickerHtmlBuilder;
 use n2n\util\type\ArgUtils;
 use n2n\web\ui\Raw;
-use n2n\web\ui\SimpleBuildContext;
 
 class BsFormHtmlBuilder {
 	private $view;
@@ -33,11 +32,11 @@ class BsFormHtmlBuilder {
 	 * @param HtmlView $view
 	 * @param BsComposer|BsConfig|null $bsComposer
 	 */
-	public function __construct(HtmlView $view, $bsComposer = null) {
+	public function __construct(HtmlView $view, $bsComposer = null, $addDatepickerCss = true) {
 		$this->view = $view;
 		$this->formHtml = $view->getFormHtmlBuilder();
 		$this->ariaFormHtml = $view->getAriaFormHtmlBuilder();
-		$this->datePickerHtml = new DatePickerHtmlBuilder($view);
+		$this->datePickerHtml = new DatePickerHtmlBuilder($view, $addDatepickerCss);
 
 		if (null === $bsComposer) return;
 
@@ -527,7 +526,7 @@ class BsFormHtmlBuilder {
 		$attrs = $bsConfig->getControlAttrs();
 		
 		$className = 'form-check-input';
-		if ($this->formHtml->meta()->isDispatched() && $this->formHtml->meta()->hasErrors()) {
+		if ($this->formHtml->meta()->isDispatched()) {
 			$className .= ' is-' . ($this->formHtml->meta()->hasErrors($propertyPath) ? 'invalid' : 'valid');
 		}
 		
@@ -558,7 +557,7 @@ class BsFormHtmlBuilder {
 			$className = 'form-control';
 		}
 
-		if ($this->formHtml->meta()->isDispatched() && $this->formHtml->meta()->hasErrors()) {
+		if ($this->formHtml->meta()->isDispatched()) {
 			$className .= ' is-' . ($this->formHtml->meta()->hasErrors($propertyPath) ? 'invalid' : 'valid');
 		}
 		
@@ -626,7 +625,7 @@ class BsFormHtmlBuilder {
 		}
 		
 		$formHtmlMeta = $this->formHtml->meta();
-		if ($formHtmlMeta->isDispatched() && $formHtmlMeta->hasErrors()) {
+		if ($formHtmlMeta->isDispatched()) {
 			if ($formHtmlMeta->hasErrors($propertyPath)) {
 				$controlAttrs = HtmlUtils::mergeAttrs($controlAttrs, ['class' => 'is-invalid']);
 				$checkControlAttrs = HtmlUtils::mergeAttrs($checkControlAttrs, ['class' => 'is-invalid']);
@@ -647,7 +646,7 @@ class BsFormHtmlBuilder {
 		}
 
 		$uiControl = $magWrapper->getMag()->createUiField($propertyPath, $this->view, $bsUiOutfitter);
-		
+
 		$htmlElement = $this->createUiFormGroup($propertyPath, $uiLabel, $uiControl, $bsConfig);
 		$htmlElement->setAttrs(HtmlUtils::mergeAttrs($containerAttrs, $htmlElement->getAttrs()));
 
