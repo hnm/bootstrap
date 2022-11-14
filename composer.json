@@ -24,7 +24,10 @@
 		"n2n/n2n-web" : "^7.2.33"
 	},
 	"config" : {
-		"vendor-dir" : "src/vendor"
+		"vendor-dir" : "src/vendor",
+		"allow-plugins": {
+			"n2n/n2n-composer-module-installer": true
+		}
 	},
 	"autoload" : {
 		"psr-4" : {
