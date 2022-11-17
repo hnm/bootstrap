@@ -18,8 +18,8 @@ class BsConfig {
 	protected $formCheckAttrs;
 
 	public function __construct(bool $required, bool $autoPlaceholder, ?string $placeholder,
-			string|UiComponent|null $helpText, bool $labelHidden, array $labelAttrs, array $controlAttrs, array $groupAttrs,
-			array $rowClassNames = null, BsComposer $child = null, array $formCheckAttrs) {
+			$helpText = null, bool $labelHidden = false, array $labelAttrs = null, array $controlAttrs = null, array $groupAttrs = null,
+			array $rowClassNames = null, BsComposer $child = null, array $formCheckAttrs = null) {
 		$this->required = $required;
 		$this->autoPlaceholder = $autoPlaceholder;
 		$this->placeholder = $placeholder;
