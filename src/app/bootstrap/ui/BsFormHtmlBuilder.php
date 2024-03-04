@@ -608,10 +608,10 @@ class BsFormHtmlBuilder {
 		$controlAttrs = array();
 		$checkControlAttrs = array();
 		
-		if ($bsComposer === null) {
+//		if ($bsComposer === null) {
 			$controlAttrs = $this->createFormControlAttrs($propertyPath, $bsConfig);
 			$checkControlAttrs = $this->createFormCheckInputAttrs($propertyPath, $bsConfig);
-		}
+//		}
 
 		$magWrapper = $this->formHtml->meta()->lookupMagWrapper($propertyPath);
 		$mag = $magWrapper->getMag();
