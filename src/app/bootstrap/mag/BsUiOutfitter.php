@@ -12,19 +12,21 @@ use bootstrap\ui\BsConfig;
 use n2n\impl\web\ui\view\html\HtmlSnippet;
 
 class BsUiOutfitter implements UiOutfitter {
-	
+
 	private $bsConfig;
 	private $outfitConfig;
 	private $controlAttrs;
 	private $checkControlAttrs;
+	private $selectControlAttrs;
 
 	public function __construct(OutfitConfig $outfitConfig = null, BsConfig $bsConfig = null,
-			array $controlAttrs = array(), array $checkControlAttrs = array()) {
+			array $controlAttrs = array(), array $checkControlAttrs = array(), array $selectControlAttrs = array()) {
 
 		$this->outfitConfig = $outfitConfig;
 		$this->bsConfig = $bsConfig;
 		$this->controlAttrs = !empty($controlAttrs) ? $controlAttrs : ['class' => 'form-control'];
 		$this->checkControlAttrs = !empty($checkControlAttrs) ? $checkControlAttrs : ['class' => 'form-check-input'];
+		$this->selectControlAttrs = !empty($selectControlAttrs) ? $selectControlAttrs : ['class' => 'form-select'];
 	}
 
 	/**
@@ -43,6 +45,7 @@ class BsUiOutfitter implements UiOutfitter {
 
 		if ($nature & self::NATURE_MAIN_CONTROL) {
 			$mainControlAttrs = ($nature & self::NATURE_CHECK) ? $this->checkControlAttrs : $this->controlAttrs;
+			$mainControlAttrs = ($nature & self::NATURE_SELECT) ? $this->selectControlAttrs : $this->controlAttrs;
 			$attrs = HtmlUtils::mergeAttrs($attrs, $mainControlAttrs);
 		}
 
@@ -85,8 +88,8 @@ class BsUiOutfitter implements UiOutfitter {
 
 		if ($elemNature & self::EL_NATURE_CONTROL_REMOVE) {
 			return new HtmlElement('button', HtmlUtils::mergeAttrs(
-				$this->createAttrs(UiOutfitter::NATURE_BTN_SECONDARY), $attrs),
-				new HtmlElement('i', array('class' => UiOutfitter::ICON_NATURE_REMOVE), $contents));
+					$this->createAttrs(UiOutfitter::NATURE_BTN_SECONDARY), $attrs),
+					new HtmlElement('i', array('class' => UiOutfitter::ICON_NATURE_REMOVE), $contents));
 		}
 
 		if ($elemNature & self::EL_NATURE_ARRAY_ITEM_CONTROL) {
@@ -96,7 +99,7 @@ class BsUiOutfitter implements UiOutfitter {
 			$container->appendLn(new HtmlElement('div',
 					array('class' => 'col-auto ' . MagCollection::CONTROL_WRAPPER_CLASS),
 					$this->createElement(UiOutfitter::EL_NATURE_CONTROL_REMOVE,
-					array('class' => MagCollection::CONTROL_REMOVE_CLASS), '')));
+							array('class' => MagCollection::CONTROL_REMOVE_CLASS), '')));
 
 			return $container;
 		}
@@ -108,7 +111,7 @@ class BsUiOutfitter implements UiOutfitter {
 
 			$summary->appendLn(new HtmlElement('div', array('class' => 'col-auto'), $contents));
 			$summary->appendLn(new HtmlElement('div', array('class' => 'col-auto ' . MagCollection::CONTROL_WRAPPER_CLASS),
-				$this->createElement(UiOutfitter::EL_NATURE_CONTROL_REMOVE, array('class' => MagCollection::CONTROL_REMOVE_CLASS), '')));
+					$this->createElement(UiOutfitter::EL_NATURE_CONTROL_REMOVE, array('class' => MagCollection::CONTROL_REMOVE_CLASS), '')));
 
 			return $container;
 		}
@@ -127,12 +130,12 @@ class BsUiOutfitter implements UiOutfitter {
 	public function createMagDispatchableView(PropertyPath $propertyPath = null, HtmlView $contextView): UiComponent {
 		$bsChild = $this->bsConfig->getChild();
 		$bs = (null !== $bsChild) ? $bsChild : $this->bsConfig;
-		
+
 		if ($this->outfitConfig === null) {
 			return $contextView->getImport('\bootstrap\mag\bsMagForm.html',
 					array('propertyPath' => $propertyPath, 'bs' => $bs, 'uiOutfitter' => $this, 'outfit' => null));
 		}
-		
+
 		$outfitChild = $this->outfitConfig->getChild();
 		$outfit = (null !== $outfitChild) ? $outfitChild : $this->outfitConfig;
 
