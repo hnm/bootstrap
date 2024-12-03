@@ -18,7 +18,7 @@ class BsUiOutfitter implements UiOutfitter {
 	private $controlAttrs;
 	private $checkControlAttrs;
 
-	public function __construct(OutfitConfig $outfitConfig = null, BsConfig $bsConfig = null,
+	public function __construct(?OutfitConfig $outfitConfig = null, ?BsConfig $bsConfig = null,
 			array $controlAttrs = array(), array $checkControlAttrs = array()) {
 
 		$this->outfitConfig = $outfitConfig;
@@ -65,7 +65,7 @@ class BsUiOutfitter implements UiOutfitter {
 	 * @param int $elemNature
 	 * @return UiComponent
 	 */
-	public function createElement(int $elemNature, array $attrs = null, $contents = ''): UiComponent {
+	public function createElement(int $elemNature, ?array $attrs = null, $contents = ''): UiComponent {
 		if ($elemNature & self::EL_NATRUE_CONTROL_ADDON_SUFFIX_WRAPPER) {
 			$inputGroupAppend = new HtmlElement('span', array('class' => 'input-group-text'), $contents);
 			return new HtmlElement('div', HtmlUtils::mergeAttrs(array('class' => 'input-group'), $attrs), $inputGroupAppend);
@@ -124,7 +124,7 @@ class BsUiOutfitter implements UiOutfitter {
 	 * {@inheritDoc}
 	 * @see \n2n\web\dispatch\mag\UiOutfitter::createMagDispatchableView()
 	 */
-	public function createMagDispatchableView(PropertyPath $propertyPath = null, HtmlView $contextView): UiComponent {
+	public function createMagDispatchableView(?PropertyPath $propertyPath = null, HtmlView $contextView): UiComponent {
 		$bsChild = $this->bsConfig->getChild();
 		$bs = (null !== $bsChild) ? $bsChild : $this->bsConfig;
 		

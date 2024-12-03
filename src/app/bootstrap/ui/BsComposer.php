@@ -209,7 +209,7 @@ class BsComposer {
 		return $this;
 	}
 	
-	public function toBsConfig(BsConfig $parentBsConfig = null) {
+	public function toBsConfig(?BsConfig $parentBsConfig = null) {
 		$required = $this->required ?? false;
 		$placeholder = $this->placeholder;
 		$helpText = $this->helpText;
@@ -250,7 +250,7 @@ class BsComposer {
 				$controlAttrs, $groupAttrs, $rowClassNames, $this->child, $formCheckAttrs);
 	}
 
-	public function child(BsComposer $bsComposer = null) {
+	public function child(?BsComposer $bsComposer = null) {
 		$this->child = $bsComposer;
 		return $this;
 	}
