@@ -256,7 +256,7 @@ class BsFormHtmlBuilder {
 		return $this->createUiRadiosCheck($propertyExpression, $options, $bsComposer, $label, true);
 	}
 	
-	protected function createUiRadiosCheck($propertyExpression, array $options, ?BsComposer $bsComposer = null, $label, bool $inline) {
+	protected function createUiRadiosCheck($propertyExpression, array $options, ?BsComposer $bsComposer, $label, bool $inline) {
 		$propertyPath = $this->createPropertyPath($propertyExpression);
 		$bsConfig = $this->createBsConfig($bsComposer);
 		
