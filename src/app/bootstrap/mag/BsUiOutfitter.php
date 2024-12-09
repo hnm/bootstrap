@@ -124,7 +124,7 @@ class BsUiOutfitter implements UiOutfitter {
 	 * {@inheritDoc}
 	 * @see \n2n\web\dispatch\mag\UiOutfitter::createMagDispatchableView()
 	 */
-	public function createMagDispatchableView(?PropertyPath $propertyPath = null, HtmlView $contextView): UiComponent {
+	public function createMagDispatchableView(?PropertyPath $propertyPath, HtmlView $contextView): UiComponent {
 		$bsChild = $this->bsConfig->getChild();
 		$bs = (null !== $bsChild) ? $bsChild : $this->bsConfig;
 		
