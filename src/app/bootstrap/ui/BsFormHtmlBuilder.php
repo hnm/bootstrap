@@ -224,7 +224,7 @@ class BsFormHtmlBuilder {
 				$this->createUiInputCheckboxCheck($propertyPath, $value, $bsConfig, $label), $bsConfig);
 	}
 	
-	protected function createUiInputCheckboxCheck(PropertyPath $propertyPath, $value, BsConfig $bsConfig, $label = null) {
+	protected function createUiInputCheckboxCheck(PropertyPath $propertyPath, $value, BsConfig $bsConfig, $label = null): UiComponent {
 		ArgUtils::valType($label, array('string', UiComponent::class), true, 'label');
 		
 		$controlAttrs = $this->createFormCheckInputAttrs($propertyPath, $bsConfig);
