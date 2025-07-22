@@ -1,6 +1,9 @@
 <?php
 namespace bootstrap\ui;
 
+use n2n\web\ui\UiException;
+use n2n\web\ui\UiComponent;
+
 class BsConfig {
 	protected $required;
 	protected $autoPlaceholder;

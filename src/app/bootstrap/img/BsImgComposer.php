@@ -29,7 +29,7 @@ class BsImgComposer implements ImgComposer {
 		$this->pics = array(self::RESERVED_BP => $xsPic);
 	}
 
-	private function assign($bpName, $arg) {
+	private function assign(string $bpName, ProportionalImgComposer $arg) {
 		unset($this->widths[$bpName]);
 		unset($this->pics[$bpName]);
 
@@ -50,53 +50,37 @@ class BsImgComposer implements ImgComposer {
 		ArgUtils::valType($arg, array('int', ProportionalImgComposer::class), true);
 	}
 
-	/**
-	 * @param int|ImgComposer $arg
-	 * @return \bootstrap\img\BsImgComposer
-	 */
-	public function sm($arg) {
+	public function sm(int|ProportionalImgComposer $arg): BsImgComposer {
 		$this->assign('sm', $arg);
 		return $this;
 	}
 
-	/**
-	 * @param int|ImgComposer $arg
-	 * @return \bootstrap\img\BsImgComposer
-	 */
-	public function md($arg) {
+	public function md(int|ProportionalImgComposer $arg): BsImgComposer {
 		$this->assign('md', $arg);
 		return $this;
 	}
 
-	/**
-	 * @param int|ImgComposer $arg
-	 * @return \bootstrap\img\BsImgComposer
-	 */
-	public function lg($arg) {
+	public function lg(int|ProportionalImgComposer $arg): BsImgComposer {
 		$this->assign('lg', $arg);
 		return $this;
 	}
 
-	/**
-	 * @param int|ImgComposer $arg
-	 * @return \bootstrap\img\BsImgComposer
-	 */
-	public function xl($arg) {
-		$this->assign('xl', $arg);
+	public function xl(int|ProportionalImgComposer $arg): BsImgComposer {
+		$this->assign('xl',$arg);
 		return $this;
 	}
 	
 	/**
 	 * @param string $name
-	 * @param int $width
+	 * @param int|ProportionalImgComposer $arg
 	 * @return \bootstrap\img\BsImgComposer
 	 */
-	public function bp(string $name, int $width) {
-		$this->assign($name, $width);
+	public function bp(string $name, int|ProportionalImgComposer $arg) {
+		$this->assign($name, $arg);
 		return $this;
 	}
 
-	private function getBpWidth($bpName) {
+	private function getBpWidth(string $bpName) {
 		return $this->bootstrapConfig->getBreakpointValueByName($bpName);
 		
 // 		switch ($bpName) {
