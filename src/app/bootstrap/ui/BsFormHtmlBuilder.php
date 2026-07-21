@@ -538,7 +538,7 @@ class BsFormHtmlBuilder {
 	}
 
 	protected function createFormSelectAttrs(PropertyPath $propertyPath, BsConfig $bsConfig,
-			array $additionalAttrs = null, string $className = null, $applyPlaceholder = true) {
+			?array $additionalAttrs = null, ?string $className = null, $applyPlaceholder = true) {
 		$attrs = $bsConfig->getControlAttrs();
 
 		if ($additionalAttrs !== null) {
